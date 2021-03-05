@@ -9,4 +9,8 @@ class Flight < ApplicationRecord
   def adult_passengers
     passengers.adults
   end
+
+  def average_adult_age
+    adult_passengers.average_age
+  end
 end

@@ -5,4 +5,8 @@ class Passenger < ApplicationRecord
   def self.adults
     where('age >= ?', '18')
   end
+
+  def self.average_age
+    average(:age)
+  end
 end
