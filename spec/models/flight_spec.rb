@@ -36,5 +36,9 @@ RSpec.describe Flight, type: :model do
     it "#adult_passengers" do
       expect(@flight1.adult_passengers).to eq([@passenger1, @passenger3])
     end
+
+    it "#average_adult_age" do
+      expect(@flight1.average_adult_age).to eq(21)
+    end
   end
 end
