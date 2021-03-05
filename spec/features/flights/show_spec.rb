@@ -21,6 +21,7 @@ RSpec.describe "flight show page" do
         expect(page).to have_content("Date and time: #{@flight1.date}, #{@flight1.time}")
         expect(page).to have_content("Departure City: #{@flight1.departure}")
         expect(page).to have_content("Arrival City: #{@flight1.arrival}")
+      end
     end
 
     it "shows all of the adult passengers on the flight"
