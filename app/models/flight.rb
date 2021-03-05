@@ -5,4 +5,8 @@ class Flight < ApplicationRecord
   def self.alphabetical
     order(:departure)
   end
+
+  def adult_passengers
+    passengers.adults
+  end
 end

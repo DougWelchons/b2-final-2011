@@ -8,3 +8,11 @@
     Arrival City: <%= @flight.arrival %>
   </p>
 </div>
+
+<div class="adult_passengers">
+  <ul>
+    <% @flight.adult_passengers.each do |passenger| %>
+      <li><%= passenger.name %></li>
+    <% end %>
+  </ul>
+</div>

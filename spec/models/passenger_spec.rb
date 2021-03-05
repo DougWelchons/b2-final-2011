@@ -15,7 +15,7 @@ RSpec.describe Passenger, type: :model do
     end
 
     it ".adults" do
-      expect(@flight1.adult_passengers).to eq([@passenger1, @passenger2, @passenger4])
+      expect(Passenger.adults).to eq([@passenger1, @passenger2, @passenger4])
     end
   end
 end

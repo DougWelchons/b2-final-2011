@@ -26,8 +26,8 @@ RSpec.describe "flight show page" do
 
     it "shows all of the adult passengers on the flight" do
       within(".adult_passengers") do
-        expect page to have_content(@passenger1.name)
-        expect page to have_content(@passenger3.name)
+        expect(page).to have_content(@passenger1.name)
+        expect(page).to have_content(@passenger3.name)
       end
     end
 
