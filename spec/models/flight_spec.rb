@@ -20,4 +20,21 @@ RSpec.describe Flight, type: :model do
       expect(Flight.alphabetical).to eq([@flight2, @flight1, @flight4, @flight5, @flight6, @flight3])
     end
   end
+
+  describe "instance methods" do
+    before :each do
+      @flight1 = Flight.create!(number: 1, date: "8/11/21", time: "12:04", departure: "B city", arrival: "A city")
+      @passenger1 = Passenger.create!(name: "Name1", age: 18)
+      @passenger2 = Passenger.create!(name: "Name2", age: 20)
+      @passenger3 = Passenger.create!(name: "Name3", age: 24)
+      @passenger4 = Passenger.create!(name: "Name4", age: 10)
+      PassengerFlight.create!(passenger: @passenger1, flight:@flight1)
+      PassengerFlight.create!(passenger: @passenger3, flight:@flight1)
+      PassengerFlight.create!(passenger: @passenger4, flight:@flight1)
+    end
+
+    it "#adult_passengers" do
+      expect(@flight1.adult_passengers).to eq([@passenger1, @passenger3])
+    end
+  end
 end
