@@ -1,0 +1,10 @@
+<h1>Flight <%= @flight.id %></h1>
+
+<div class="flight_info">
+  <p>
+    Flight number: <%= @flight.number %><br>
+    Date and time: <%= "#{@flight.date}, #{@flight.time}" %><br>
+    Departure City: <%= @flight.departure %><br>
+    Arrival City: <%= @flight.arrival %>
+  </p>
+</div>

@@ -7,9 +7,9 @@ RSpec.describe "flight show page" do
     @passenger2 = Passenger.create!(name: "Name2", age: 20)
     @passenger3 = Passenger.create!(name: "Name3", age: 24)
     @passenger4 = Passenger.create!(name: "Name4", age: 10)
-    Passenger_flight.create!(passenger: @passenger1, flight:@flight1)
-    Passenger_flight.create!(passenger: @passenger2, flight:@flight1)
-    Passenger_flight.create!(passenger: @passenger4, flight:@flight1)
+    PassengerFlight.create!(passenger: @passenger1, flight:@flight1)
+    PassengerFlight.create!(passenger: @passenger2, flight:@flight1)
+    PassengerFlight.create!(passenger: @passenger4, flight:@flight1)
 
     visit "/flights/#{@flight1.id}"
   end
