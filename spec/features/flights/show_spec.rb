@@ -31,11 +31,18 @@ RSpec.describe "flight show page" do
       end
     end
 
-    it "does not show children who are on the flight"
+    it "does not show children who are on the flight" do
+      expect(page).to_not have_content(@passenger4.name)
+    end
 
-    it "does not show adults who are not on the flight"
+    it "does not show adults who are not on the flight" do
+      expect(page).to_not have_content(@passenger2.name)
+    end
 
-    it "shows the average age of all adult passengers on the flight"
-
+    it "shows the average age of all adult passengers on the flight" do
+      within(".adult_passengers") do
+        expect(page).to have_content("Average adult age: 21")
+      end
+    end
   end
 end
