@@ -13,4 +13,8 @@ class Flight < ApplicationRecord
   def average_adult_age
     adult_passengers.average_age
   end
+
+  def find_passenger_flight_record(passenger_id)
+    passenger_flights.find_passenger_relationship(passenger_id).first
+  end
 end

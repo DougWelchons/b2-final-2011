@@ -28,9 +28,9 @@ RSpec.describe Flight, type: :model do
       @passenger2 = Passenger.create!(name: "Name2", age: 20)
       @passenger3 = Passenger.create!(name: "Name3", age: 24)
       @passenger4 = Passenger.create!(name: "Name4", age: 10)
-      PassengerFlight.create!(passenger: @passenger1, flight:@flight1)
-      PassengerFlight.create!(passenger: @passenger3, flight:@flight1)
-      PassengerFlight.create!(passenger: @passenger4, flight:@flight1)
+      @pf1 = PassengerFlight.create!(passenger: @passenger1, flight:@flight1)
+      @pf2 = PassengerFlight.create!(passenger: @passenger3, flight:@flight1)
+      @pf3 = PassengerFlight.create!(passenger: @passenger4, flight:@flight1)
     end
 
     it "#adult_passengers" do
@@ -39,6 +39,10 @@ RSpec.describe Flight, type: :model do
 
     it "#average_adult_age" do
       expect(@flight1.average_adult_age).to eq(21)
+    end
+
+    it "#find_passenger_flight_record" do
+      expect(@flight1.find_passenger_flight_record(@passenger1.id)).to eq(@pf1)
     end
   end
 end

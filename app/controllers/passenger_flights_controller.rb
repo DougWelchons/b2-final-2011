@@ -2,7 +2,7 @@ class PassengerFlightsController < ApplicationController
 
   def destroy
     @flight = Flight.find(params[:flight_id])
-    @relationship = @flight.passenger_flights.where(passenger: "#{params[:passenger_id]}").first
+    @relationship = @flight.find_passenger_flight_record("#{params[:passenger_id]}")
     @relationship.destroy
 
     redirect_to("/flights/#{@flight.id}")
