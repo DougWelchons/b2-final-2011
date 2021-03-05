@@ -55,5 +55,7 @@ RSpec.describe "flights index page" do
       expect("Flight number: #{@flight5.number}").to appear_before("Flight number: #{@flight6.number}")
       expect("Flight number: #{@flight6.number}").to appear_before("Flight number: #{@flight3.number}")
     end
+
+    it "lists each flight by number of passengers"
   end
 end

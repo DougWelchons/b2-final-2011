@@ -17,4 +17,13 @@ class Flight < ApplicationRecord
   def find_passenger_flight_record(passenger_id)
     passenger_flights.find_passenger_relationship(passenger_id).first
   end
+
+  ###### incomplete - for extension ######
+  def order_by_passengers
+    joins(:passengers)
+    group(:id)
+    select('flights.*, cout(passengers.id) as total_passengers')
+    order('total_passengers')
+  end
+  ###### ------ ######
 end
