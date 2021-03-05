@@ -79,7 +79,7 @@ RSpec.describe "flight show page" do
     end
 
     it "doen't remove the passenger record from the database" do
-      expect(Passenger.find(@passenger1.id)).to eq(@pasenger1)
+      expect(Passenger.find(@passenger1.id)).to eq(@passenger1)
     end
   end
 end
