@@ -44,5 +44,42 @@ RSpec.describe "flight show page" do
         expect(page).to have_content("Average adult age: 21")
       end
     end
+
+    it "has a 'remove' button next to every passenger" do
+      within(".adult_passengers") do
+        within("#passenger_#{@passenger1.id}") do
+          expect(page).to have_button("Remove")
+        end
+
+        within("#passenger_#{@passenger3.id}") do
+          expect(page).to have_button("Remove")
+        end
+      end
+    end
+  end
+
+  describe "when I click the remove button it" do
+    it "returns me to the flight show page" do
+      within(".adult_passengers") do
+        within("#passenger_#{@passenger1.id}") do
+          click_button("Remove")
+        end
+      end
+      expect(current_path).to eq("/flights/#{@flight1.id}")
+    end
+
+    it "removes the passenger from the flight" do
+      within(".adult_passengers") do
+        within("#passenger_#{@passenger1.id}") do
+          click_button("Remove")
+        end
+      end
+
+      expect(page).to_not have_content(@passenger1.name)
+    end
+
+    it "doen't remove the passenger record from the database" do
+      expect(Passenger.find(@passenger1.id)).to eq(@pasenger1)
+    end
   end
 end
