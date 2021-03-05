@@ -8,7 +8,7 @@ RSpec.describe "flight show page" do
     @passenger3 = Passenger.create!(name: "Name3", age: 24)
     @passenger4 = Passenger.create!(name: "Name4", age: 10)
     PassengerFlight.create!(passenger: @passenger1, flight:@flight1)
-    PassengerFlight.create!(passenger: @passenger2, flight:@flight1)
+    PassengerFlight.create!(passenger: @passenger3, flight:@flight1)
     PassengerFlight.create!(passenger: @passenger4, flight:@flight1)
 
     visit "/flights/#{@flight1.id}"
@@ -24,13 +24,18 @@ RSpec.describe "flight show page" do
       end
     end
 
-    it "shows all of the adult passengers on the flight"
+    it "shows all of the adult passengers on the flight" do
+      within(".adult_passengers") do
+        expect page to have_content(@passenger1.name)
+        expect page to have_content(@passenger3.name)
+      end
+    end
 
     it "does not show children who are on the flight"
 
     it "does not show adults who are not on the flight"
 
-    it "shows the average age of all adult passenfgers on the flight"
+    it "shows the average age of all adult passengers on the flight"
 
   end
 end
